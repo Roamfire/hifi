@@ -36,6 +36,8 @@
 #include <CrashReporter.h>
 #endif
 
+// Note(Roman) : wouldn't it be better to split cross platform code to separate files,
+//               such as win32_main.cpp, linux_main.cpp etc.? makes for a continuous, easily readable code.
 #ifdef Q_OS_WIN
 extern "C" {
     typedef int(__stdcall * CHECKMINSPECPROC) ();
@@ -83,7 +85,6 @@ int main(int argc, const char* argv[]) {
     parser.addOption(overrideScriptsPathOption);
     parser.addOption(allowMultipleInstancesOption);
     parser.parse(arguments);
-
 
     const QString& applicationName = getInterfaceSharedMemoryName();
     bool instanceMightBeRunning = true;
